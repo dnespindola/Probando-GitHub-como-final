@@ -11,6 +11,7 @@ public class prueba {
 		new Thread (new Splash()).start();
 		//MediadorMenuPrincipal imp=new MediadorMenuPrincipal();
 		
+		
 		// TODO Auto-generated method stub
 
 	}
