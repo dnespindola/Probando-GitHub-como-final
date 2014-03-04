@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/appframework-1.0.3.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/commons-beanutils-1.8.0.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/commons-digester-1.7.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/commons-javaflow-20060411.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/groovy-all-1.5.5.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/hsqldb.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/iText-2.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jasperreports-3.7.4.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jdo2-api-2.0.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jdori.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jdori-enhancer.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jpox-core-1.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jpox-enhancer-1.2.3.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/jpox-rdbms-1.2.2.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/log4j-1.2.8.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/mysql-connector-java-3.0.11-stable-bin.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/mysql-connector-java-5.1.6-bin.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/substance.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/swing-worker-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/tjdo.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/xml-apis.jar"/>
+	<classpathentry kind="lib" path="D:/trabajos java POO/riegoscentro/lib/mysql-connector-java-5.1.27-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

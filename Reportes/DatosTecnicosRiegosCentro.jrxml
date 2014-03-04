@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DatosTecnicosRiegosCentro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     motor.`TIPO` AS motor_TIPO,
+     neumatico.`DIAMETRO` AS neumatico_DIAMETRO,
+     valvula.`TIPO_REDUCTOR` AS valvula_TIPO_REDUCTOR,
+     persona.`NOMBRE` AS persona_NOMBRE,
+     persona.`TIPO` AS persona_TIPO,
+     persona.`APELLIDO` AS persona_APELLIDO,
+     persona.`DNI` AS persona_DNI,
+     equipo.`TABLERO` AS equipo_TABLERO,
+     equipo.`ID` AS equipo_ID,
+     equipo.`HORAS_IRRIGACION` AS equipo_HORAS_IRRIGACION,
+     equipo.`PRECIPITACION_MINIMA` AS equipo_PRECIPITACION_MINIMA,
+     equipo.`PRESION_CONEXION` AS equipo_PRESION_CONEXION,
+     equipo.`TRANSPORTABLE` AS equipo_TRANSPORTABLE,
+     equipo.`CONSUMO_AGUA` AS equipo_CONSUMO_AGUA,
+     equipo.`CAUDAL` AS equipo_CAUDAL,
+     equipo.`BOQUILLAS_ANULADAS` AS equipo_BOQUILLAS_ANULADAS,
+     equipo.`ANGULO_IRRIGACION` AS equipo_ANGULO_IRRIGACION,
+     equipo.`BAJO_RIEGO` AS equipo_BAJO_RIEGO,
+     equipo.`TIPO_BOQUILLA` AS equipo_TIPO_BOQUILLA
+FROM
+     `estructuradetuberia` estructuradetuberia INNER JOIN `equipo` equipo ON estructuradetuberia.`ID` = equipo.`ESTRUCTURA_DE_TUBERIA_ID_OID`
+     INNER JOIN `inventarioboquilla` inventarioboquilla ON equipo.`ID` = inventarioboquilla.`EQUIPO_ID_OID`
+     INNER JOIN `motor` motor ON equipo.`MOTOR_ID_OID` = motor.`ID`
+     INNER JOIN `neumatico` neumatico ON equipo.`RODADO_ID_OID` = neumatico.`ID`
+     INNER JOIN `valvula` valvula ON equipo.`VALVULA_ID_OID` = valvula.`ID`
+     INNER JOIN `campo` campo ON equipo.`CAMPO_ID_OID` = campo.`ID`
+     INNER JOIN `persona` persona ON campo.`CLIENTE_PERSONA_ID_OID` = persona.`PERSONA_ID`]]>
+	</queryString>
+	<field name="motor_TIPO" class="java.lang.String"/>
+	<field name="neumatico_DIAMETRO" class="java.lang.String"/>
+	<field name="valvula_TIPO_REDUCTOR" class="java.lang.String"/>
+	<field name="persona_NOMBRE" class="java.lang.String"/>
+	<field name="persona_TIPO" class="java.lang.String"/>
+	<field name="persona_APELLIDO" class="java.lang.String"/>
+	<field name="persona_DNI" class="java.lang.String"/>
+	<field name="equipo_TABLERO" class="java.lang.String"/>
+	<field name="equipo_ID" class="java.lang.Long"/>
+	<field name="equipo_HORAS_IRRIGACION" class="java.lang.Integer"/>
+	<field name="equipo_PRECIPITACION_MINIMA" class="java.lang.Integer"/>
+	<field name="equipo_PRESION_CONEXION" class="java.lang.Double"/>
+	<field name="equipo_TRANSPORTABLE" class="java.lang.Integer"/>
+	<field name="equipo_CONSUMO_AGUA" class="java.lang.Integer"/>
+	<field name="equipo_CAUDAL" class="java.lang.Integer"/>
+	<field name="equipo_BOQUILLAS_ANULADAS" class="java.lang.Integer"/>
+	<field name="equipo_ANGULO_IRRIGACION" class="java.lang.Integer"/>
+	<field name="equipo_BAJO_RIEGO" class="java.lang.Double"/>
+	<field name="equipo_TIPO_BOQUILLA" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="-20" y="0" width="595" height="64"/>
+				<imageExpression class="java.lang.String"><![CDATA["wood.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="5" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Wood Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="63" y="39" width="200" height="22" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Wood SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[motor_TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="29" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[neumatico_DIAMETRO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="58" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[valvula_TIPO_REDUCTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="87" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[persona_NOMBRE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="116" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[persona_TIPO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="145" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[persona_APELLIDO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="174" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[persona_DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="203" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_TABLERO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="232" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="261" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_HORAS_IRRIGACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="290" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_PRECIPITACION_MINIMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="319" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_PRESION_CONEXION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="348" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_TRANSPORTABLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="377" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_CONSUMO_AGUA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="406" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_CAUDAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="435" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_BOQUILLAS_ANULADAS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="464" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_ANGULO_IRRIGACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="493" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_BAJO_RIEGO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="522" y="19" width="29" height="15"/>
+				<textElement/>
+				<text><![CDATA[equipo_TIPO_BOQUILLA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{motor_TIPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="29" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{neumatico_DIAMETRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="58" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{valvula_TIPO_REDUCTOR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="87" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{persona_NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="116" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{persona_TIPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="145" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{persona_APELLIDO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="174" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{persona_DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="203" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_TABLERO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="232" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{equipo_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="261" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_HORAS_IRRIGACION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="290" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_PRECIPITACION_MINIMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="319" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{equipo_PRESION_CONEXION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="348" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_TRANSPORTABLE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="377" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_CONSUMO_AGUA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="406" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_CAUDAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="435" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_BOQUILLAS_ANULADAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="464" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{equipo_ANGULO_IRRIGACION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="493" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{equipo_BAJO_RIEGO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="522" y="0" width="29" height="15"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_TIPO_BOQUILLA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

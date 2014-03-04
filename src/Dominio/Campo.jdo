@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
+    "http://java.sun.com/dtd/jdo_2_0.dtd">
+<jdo>
+    <package name="Dominio">
+        <class
+              name="Campo">
+			<field
+                  name="id" primary-key="true" value-strategy="identity"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="hectareas"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="direccion"
+                  persistence-modifier="persistent"/>            
+            <field
+                  name="cliente"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="localidadId"
+                  persistence-modifier="persistent"/>
+        </class>
+    </package>
+</jdo>

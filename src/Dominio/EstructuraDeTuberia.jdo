@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jdo PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Java Data Objects Metadata 2.0//EN"
+    "http://java.sun.com/dtd/jdo_2_0.dtd">
+<jdo>
+    <package name="Dominio">
+        <class
+              name="EstructuraDeTuberia">
+			<field
+                  name="id" primary-key="true" value-strategy="identity"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="diamTuberia1"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="diamTuberia2"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="diamTuberia3"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="cantidad1"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="cantidad2"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="cantidad3"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="longitud1"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="longitud2"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="longitud3"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="longitudTotal"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="tipo"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="voladizo"
+                  persistence-modifier="persistent"/>
+            <field
+                  name="canon"
+                  persistence-modifier="persistent"/>
+        </class>
+    </package>
+</jdo>

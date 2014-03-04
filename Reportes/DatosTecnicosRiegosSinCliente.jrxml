@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="FacturaRiegosCentro" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.100000000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT
+     equipo.`ANGULO_IRRIGACION` AS equipo_ANGULO_IRRIGACION,
+     equipo.`BAJO_RIEGO` AS equipo_BAJO_RIEGO,
+     equipo.`BOQUILLAS_ANULADAS` AS equipo_BOQUILLAS_ANULADAS,
+     equipo.`CAUDAL` AS equipo_CAUDAL,
+     equipo.`CONSUMO_AGUA` AS equipo_CONSUMO_AGUA,
+     equipo.`HORAS_IRRIGACION` AS equipo_HORAS_IRRIGACION,
+     equipo.`PRECIPITACION_MINIMA` AS equipo_PRECIPITACION_MINIMA,
+     equipo.`PRESION_CONEXION` AS equipo_PRESION_CONEXION,
+     equipo.`TRANSPORTABLE` AS equipo_TRANSPORTABLE,
+     equipo.`TIPO_BOQUILLA` AS equipo_TIPO_BOQUILLA,
+     equipo.`TABLERO` AS equipo_TABLERO,
+     equipo.`ID` AS equipo_ID,
+     motor.`TIPO` AS motor_TIPO,
+     valvula.`TIPO_REDUCTOR` AS valvula_TIPO_REDUCTOR,
+     neumatico.`DIAMETRO` AS neumatico_DIAMETRO,
+     estructuradetuberia.`LONGITUD_TOTAL` AS estructuradetuberia_LONGITUD_TOTAL,
+     estructuradetuberia.`VOLADIZO` AS estructuradetuberia_VOLADIZO,
+     estructuradetuberia.`CANON` AS estructuradetuberia_CANON,
+     aspersor.`PRESION_ASPERSOR` AS aspersor_PRESION_ASPERSOR,
+     aspersor.`DISTANCIA_PISO` AS aspersor_DISTANCIA_PISO,
+     aspersor.`DISTANCIA_ENTRE_ASPERSOR` AS aspersor_DISTANCIA_ENTRE_ASPERSOR,
+     presupuesto.`ID` AS presupuesto_ID,
+     inventarioboquilla.`EQUIPO_ID_OID` AS inventarioboquilla_EQUIPO_ID_OID,
+     estructuradetuberia.`CANTIDAD1` AS estructuradetuberia_CANTIDAD1,
+     estructuradetuberia.`CANTIDAD3` AS estructuradetuberia_CANTIDAD3,
+     estructuradetuberia.`CANTIDAD2` AS estructuradetuberia_CANTIDAD2,
+     estructuradetuberia.`DIAM_TUBERIA1` AS estructuradetuberia_DIAM_TUBERIA1,
+     estructuradetuberia.`DIAM_TUBERIA2` AS estructuradetuberia_DIAM_TUBERIA2,
+     estructuradetuberia.`DIAM_TUBERIA3` AS estructuradetuberia_DIAM_TUBERIA3,
+     estructuradetuberia.`LONGITUD1` AS estructuradetuberia_LONGITUD1,
+     estructuradetuberia.`LONGITUD2` AS estructuradetuberia_LONGITUD2,
+     estructuradetuberia.`LONGITUD3` AS estructuradetuberia_LONGITUD3
+FROM
+     `motor` motor INNER JOIN `equipo` equipo ON motor.`ID` = equipo.`MOTOR_ID_OID`
+     INNER JOIN `neumatico` neumatico ON equipo.`RODADO_ID_OID` = neumatico.`ID`
+     INNER JOIN `valvula` valvula ON equipo.`VALVULA_ID_OID` = valvula.`ID`
+     INNER JOIN `estructuradetuberia` estructuradetuberia ON equipo.`ESTRUCTURA_DE_TUBERIA_ID_OID` = estructuradetuberia.`ID`
+     INNER JOIN `inventarioboquilla` inventarioboquilla ON equipo.`ID` = inventarioboquilla.`EQUIPO_ID_OID`
+     INNER JOIN `presupuesto` presupuesto ON equipo.`ID` = presupuesto.`EQUIPO_ID_OID`
+     INNER JOIN `aspersor` aspersor ON equipo.`ASPERSOR_ID_OID` = aspersor.`ID`
+WHERE
+     presupuesto.`ID` LIKE $P{id}]]>
+	</queryString>
+	<field name="equipo_ANGULO_IRRIGACION" class="java.lang.Integer"/>
+	<field name="equipo_BAJO_RIEGO" class="java.lang.Double"/>
+	<field name="equipo_BOQUILLAS_ANULADAS" class="java.lang.Integer"/>
+	<field name="equipo_CAUDAL" class="java.lang.Integer"/>
+	<field name="equipo_CONSUMO_AGUA" class="java.lang.Integer"/>
+	<field name="equipo_HORAS_IRRIGACION" class="java.lang.Integer"/>
+	<field name="equipo_PRECIPITACION_MINIMA" class="java.lang.Integer"/>
+	<field name="equipo_PRESION_CONEXION" class="java.lang.Double"/>
+	<field name="equipo_TRANSPORTABLE" class="java.lang.Integer"/>
+	<field name="equipo_TIPO_BOQUILLA" class="java.lang.String"/>
+	<field name="equipo_TABLERO" class="java.lang.String"/>
+	<field name="equipo_ID" class="java.lang.Long"/>
+	<field name="motor_TIPO" class="java.lang.String"/>
+	<field name="valvula_TIPO_REDUCTOR" class="java.lang.String"/>
+	<field name="neumatico_DIAMETRO" class="java.lang.String"/>
+	<field name="estructuradetuberia_LONGITUD_TOTAL" class="java.lang.Double"/>
+	<field name="estructuradetuberia_VOLADIZO" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_CANON" class="java.lang.Integer"/>
+	<field name="aspersor_PRESION_ASPERSOR" class="java.lang.Double"/>
+	<field name="aspersor_DISTANCIA_PISO" class="java.lang.Double"/>
+	<field name="aspersor_DISTANCIA_ENTRE_ASPERSOR" class="java.lang.Double"/>
+	<field name="presupuesto_ID" class="java.lang.Long"/>
+	<field name="inventarioboquilla_EQUIPO_ID_OID" class="java.lang.Long"/>
+	<field name="estructuradetuberia_CANTIDAD1" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_CANTIDAD3" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_CANTIDAD2" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_DIAM_TUBERIA1" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_DIAM_TUBERIA2" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_DIAM_TUBERIA3" class="java.lang.Integer"/>
+	<field name="estructuradetuberia_LONGITUD1" class="java.lang.Double"/>
+	<field name="estructuradetuberia_LONGITUD2" class="java.lang.Double"/>
+	<field name="estructuradetuberia_LONGITUD3" class="java.lang.Double"/>
+	<group name="estructuradetuberia_LONGITUD_TOTAL">
+		<groupExpression><![CDATA[$F{estructuradetuberia_LONGITUD_TOTAL}]]></groupExpression>
+		<groupHeader>
+			<band height="282">
+				<staticText>
+					<reportElement mode="Transparent" x="8" y="22" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Área regada incluido cañón final ........................................................]]></text>
+				</staticText>
+				<line>
+					<reportElement x="-20" y="45" width="595" height="1" forecolor="#666666"/>
+				</line>
+				<staticText>
+					<reportElement mode="Transparent" x="8" y="2" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Longitud total del sistema (con voladizo) ..........................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="2" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_LONGITUD_TOTAL}-$F{estructuradetuberia_CANON}+" mts."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="495" y="22" width="33" height="20" forecolor="#000000" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="false" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[ha.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="27" y="59" width="194" height="23" forecolor="#000000" backcolor="#E6E6E6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="16" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Estructura de los tramos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="149" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Motor ]]></text>
+				</staticText>
+				<line>
+					<reportElement x="28" y="82" width="497" height="1" forecolor="#666666"/>
+				</line>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="169" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Neumáticos ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="227" y="169" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{neumatico_DIAMETRO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="227" y="189" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{valvula_TIPO_REDUCTOR}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="189" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Reductores ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="209" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de boquillas ]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="227" y="209" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_TIPO_BOQUILLA}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="281" width="595" height="1" forecolor="#666666"/>
+				</line>
+				<textField isStretchWithOverflow="true" pattern="###0.00" isBlankWhenNull="false">
+					<reportElement x="451" y="21" width="44" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{equipo_BAJO_RIEGO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="227" y="229" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{aspersor_DISTANCIA_PISO}+" mts."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="229" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Distancia al piso del aspersor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="37" y="249" width="190" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Distancia entre aspersores]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="227" y="249" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{aspersor_DISTANCIA_ENTRE_ASPERSOR}+" mts."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="227" y="149" width="301" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{motor_TIPO}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="227" y="89" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_DIAM_TUBERIA1}+" mm."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="37" y="89" width="190" height="20" forecolor="#666666"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Diametro de tubería]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="327" y="89" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_DIAM_TUBERIA2}+" mm."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="427" y="89" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_DIAM_TUBERIA3}+" mm."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="37" y="129" width="190" height="20" forecolor="#666666"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Cantidad de tramos]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="227" y="129" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Integer"><![CDATA[$F{estructuradetuberia_CANTIDAD1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="327" y="129" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_CANTIDAD2}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="false">
+					<reportElement x="427" y="129" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_CANTIDAD3}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="37" y="109" width="190" height="20" forecolor="#666666"/>
+					<textElement>
+						<font size="12" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Longitud del tramo]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="227" y="109" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_LONGITUD1}+" mts."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="327" y="109" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_LONGITUD2}+" mts."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="427" y="109" width="100" height="20"/>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_LONGITUD3}+" mts."]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="estructuradetuberia_VOLADIZO">
+		<groupExpression><![CDATA[$F{estructuradetuberia_VOLADIZO}]]></groupExpression>
+		<groupHeader>
+			<band height="270">
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="9" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_VOLADIZO}+" mts."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="9" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Longitud de voladizo ............................................................................]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="30" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Pulverización final ................................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="29" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_CANON}+" mts."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="49" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Radio regado incluido pulverización final .........................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="49" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{estructuradetuberia_LONGITUD_TOTAL}+" mts."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="69" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Ángulo de irrigación .............................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="69" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_ANGULO_IRRIGACION}+" º"]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="89" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Horas de irrigación propuestas al día .................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="89" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_HORAS_IRRIGACION}+" hs."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="109" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Consumo de agua total ........................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="109" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_CONSUMO_AGUA}+" m3/h."]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="129" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Capacidad de irrigación .......................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" pattern="###0.00">
+					<reportElement x="451" y="129" width="104" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{equipo_HORAS_IRRIGACION}*$F{equipo_CONSUMO_AGUA}/($F{equipo_BAJO_RIEGO}*10000)]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="149" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Velocidad máxima ................................................................................]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="169" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tiempo mínimo a vel. máx. para dar toda una vuelta ......................]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="189" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Capacidad de irrigación .......................................................................]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="451" y="149" width="104" height="20" forecolor="#FF0066" backcolor="#FF6699"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[VER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="451" y="189" width="104" height="20" forecolor="#FF0066" backcolor="#FF6699"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[VER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="451" y="169" width="104" height="20" forecolor="#FF0066" backcolor="#FF6699"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[VER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="209" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Tablero utlilizado ..................................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="451" y="209" width="124" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_TABLERO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Transparent" x="9" y="229" width="442" height="20" forecolor="#666666" backcolor="#E6E6E6"/>
+					<textElement>
+						<font size="14" isBold="true" isItalic="true"/>
+					</textElement>
+					<text><![CDATA[Boquillas anuladas ...............................................................................]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="450" y="229" width="124" height="20"/>
+					<textElement>
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{equipo_BOQUILLAS_ANULADAS}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="factura_PRECIO">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="22"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="116">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="135" backcolor="#006699"/>
+				<staticText>
+					<reportElement x="20" y="20" width="259" height="43" forecolor="#FFFFFF"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Datos técnicos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="79" width="75" height="16" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Fecha y hora:   ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="32" y="63" width="75" height="16" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false" isItalic="false"/>
+					</textElement>
+					<text><![CDATA[Nº de proyecto:   ]]></text>
+				</staticText>
+				<textField pattern="###0">
+					<reportElement x="107" y="63" width="172" height="16" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{presupuesto_ID}]]></textFieldExpression>
+				</textField>
+				<image>
+					<reportElement x="489" y="20" width="86" height="105"/>
+					<imageExpression class="java.lang.String"><![CDATA["F:\\trabajos java POO\\riegoscentro\\Imagenes\\fondo chico blanco.png"]]></imageExpression>
+				</image>
+			</frame>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="87" y="59" width="172" height="16" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="11"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="1">
+			<line>
+				<reportElement x="-20" y="0" width="595" height="1" forecolor="#666666"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
